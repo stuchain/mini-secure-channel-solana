@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Channel Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Secure Channel Demo</h1>
+            <p>Cryptography - University of Macedonia</p>
+            <p>Professor: Sofia Petridou</p>
+        </header>
+        
+        <section class="controls">
+            <h2>Run Phases</h2>
+            <div class="buttons">
+                <button class="btn" onclick="runPhase(1)">Phase 1: Basic DH</button>
+                <button class="btn" onclick="runPhase(2)">Phase 2: MITM Attack</button>
+                <button class="btn" onclick="runPhase(3)">Phase 3: Authenticated DH</button>
+                <button class="btn" onclick="runPhase(4)">Phase 4: Secure Channel</button>
+                <button class="btn" onclick="runPhase(5)">Phase 5: Blockchain</button>
+                <button class="btn" onclick="runPhase(6)">Phase 6: Attack Prevention</button>
+                <button class="btn btn-all" onclick="runAllPhases()">Run All Phases</button>
+            </div>
+        </section>
+        
+        <div class="phases" id="phasesGrid"></div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
