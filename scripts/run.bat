@@ -8,9 +8,9 @@ cd /d "%~dp0\.."
 REM Pick a free port (5000, 5001, ...)
 if "%PORT%"=="" set PORT=5000
 :findport
-set INUSE=
-for /f "tokens=1,2,3,4,5" %%a in ('netstat -ano ^| findstr /r /c:":%PORT% .*LISTENING"') do set INUSE=1
-if defined INUSE (
+REM Check if port is in use using netstat - simpler and more reliable
+netstat -ano | findstr /r /c:":%PORT% " | findstr "LISTENING" >nul 2>&1
+if %errorlevel% equ 0 (
     set /a PORT+=1
     goto findport
 )
@@ -75,10 +75,9 @@ echo [OK] Project files found!
 echo.
 
 REM Dependencies
-echo [3/5] Checking dependencies...
-REM Use a local venv to avoid system Python permission issues
+echo [3/5] Checking dependencies
 if not exist ".venv\Scripts\python.exe" (
-    echo [INFO] Creating virtual environment (.venv)...
+    echo [INFO] Creating virtual environment (.venv)
     python -m venv .venv
     if errorlevel 1 (
         cls
@@ -96,13 +95,14 @@ if not exist ".venv\Scripts\python.exe" (
 )
 set "PYTHON=%CD%\.venv\Scripts\python.exe"
 
-%PYTHON% -c "import flask" 2>nul
+REM Check if flask is installed
+"%PYTHON%" -c "import flask" >nul 2>&1
 if errorlevel 1 (
-    echo [INFO] Dependencies not installed. Installing now...
-    echo This may take a few minutes. Please wait...
+    echo [INFO] Dependencies not installed. Installing now
+    echo This may take a few minutes. Please wait
     echo.
-    %PYTHON% -m pip install --upgrade pip setuptools wheel --quiet
-    %PYTHON% -m pip install -r requirements.txt
+    "%PYTHON%" -m pip install --upgrade pip setuptools wheel --quiet
+    "%PYTHON%" -m pip install -r requirements.txt
     if errorlevel 1 (
         cls
         echo.
@@ -177,7 +177,7 @@ start http://localhost:%PORT%
 REM Run Flask
 cd backend
 set "PORT=%PORT%"
-%PYTHON% app.py
+"%PYTHON%" app.py
 
 REM When server stops
 echo.

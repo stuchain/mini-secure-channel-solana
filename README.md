@@ -2,7 +2,7 @@
 
 Cryptography course assignment (University of Macedonia).
 
-The goal of this assignment is to show—step by step—how you go from “two people exchanging keys” to something that looks like a real secure channel:
+The goal of this assignment is to show step by step how you go from “two people exchanging keys” to something that looks like a real secure channel:
 - what Diffie-Hellman gives you (and what it *doesn’t*)
 - how a man-in-the-middle breaks unauthenticated key exchange
 - how signatures bind a key to an identity
