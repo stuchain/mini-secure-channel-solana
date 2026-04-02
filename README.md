@@ -24,7 +24,9 @@ This repo is a small “build-up” demo of a secure channel:
 
 ## Demo
 
-![Secure Channel Demo](./content/demo.gif)
+<p align="center">
+  <img src="./content/demo.gif" alt="Secure Channel Demo" width="1000" />
+</p>
 
 ### Quick start (recommended)
 
