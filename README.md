@@ -17,6 +17,15 @@ This repo is a small “build-up” demo of a secure channel:
 - add AEAD for encrypted messages
 - add a Solana-style key registry + show why it helps
 
+## Project Paper and Presentation
+
+- [Project Paper (Greek)](./Project%20Paper%20(gr).pdf)
+- [Project Presentation (Greek)](./Project%20Presentation%20(gr).pdf)
+
+## Demo
+
+![Secure Channel Demo](./content/demo.gif)
+
 ### Quick start (recommended)
 
 - **macOS / Linux**:
